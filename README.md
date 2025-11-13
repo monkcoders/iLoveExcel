@@ -6,6 +6,7 @@ iLoveExcel is a comprehensive Python toolkit for performing complex operations o
 
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 
 ## Features
 
@@ -27,27 +28,53 @@ iLoveExcel is a comprehensive Python toolkit for performing complex operations o
 - 📊 **Deduplication**: Remove duplicate rows with configurable columns
 - 🔍 **Type Hints**: Full type annotations for better IDE support
 - 📝 **Logging**: Comprehensive logging with configurable levels
+- 🌍 **Cross-Platform**: Works on Windows, Linux, and macOS
+
+## System Requirements
+
+- **Python**: 3.10 or higher
+- **Operating Systems**: Windows 10+, Linux (any modern distro), macOS 10.15+
+- **RAM**: 4GB minimum (8GB+ recommended for large files)
+- **Disk Space**: 500MB for installation
+
+See [PLATFORM_SUPPORT.md](PLATFORM_SUPPORT.md) for detailed platform compatibility information.
 
 ## Installation
 
-### Prerequisites
+### Quick Install
 
-- Python 3.10 or higher
-- pip package manager
-
-### Install from Source
-
-```bash
-# Clone the repository
+#### Windows
+```cmd
 git clone https://github.com/monkcoders/iLoveExcel.git
 cd iLoveExcel
-
-# Install in development mode
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
 pip install -e .
-
-# Or install with development dependencies
-pip install -e ".[dev]"
 ```
+
+#### Linux
+```bash
+git clone https://github.com/monkcoders/iLoveExcel.git
+cd iLoveExcel
+sudo apt install python3-tk  # For GUI support
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e .
+```
+
+#### macOS
+```bash
+git clone https://github.com/monkcoders/iLoveExcel.git
+cd iLoveExcel
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e .
+```
+
+See [INSTALL.md](INSTALL.md) for detailed installation instructions.
 
 ### Install Dependencies Only
 
