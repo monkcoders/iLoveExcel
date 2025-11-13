@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iLoveExcel"
+version = "0.1.0"
+description = "Advanced CSV and Excel merging, joining, and union operations with GUI and CLI"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "iLoveExcel Contributors", email = "info@iloveexcel.example.com"}
+]
+keywords = ["csv", "excel", "pandas", "data", "merge", "join", "union"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "pandas>=2.0.0",
+    "PySimpleGUI>=4.60.0",
+    "openpyxl>=3.1.0",
+    "xlsxwriter>=3.1.0",
+    "click>=8.1.0",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "mypy>=1.5.0",
+    "black>=23.7.0",
+    "flake8>=6.1.0",
+]
+large-data = [
+    "dask[dataframe]>=2023.1.0",
+]
+
+[project.scripts]
+csvexcel = "iLoveExcel.cli:main"
+iloveexcel-gui = "iLoveExcel.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/monkcoders/iLoveExcel"
+Documentation = "https://github.com/monkcoders/iLoveExcel#readme"
+Repository = "https://github.com/monkcoders/iLoveExcel"
+Issues = "https://github.com/monkcoders/iLoveExcel/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+iLoveExcel = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
