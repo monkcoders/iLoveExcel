@@ -4,7 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "iLoveExcel"
-version = "0.1.0"
+# Dynamic version from __init__.py
+dynamic = ["version"]
 description = "Advanced CSV and Excel merging, joining, and union operations with GUI and CLI"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -26,36 +27,68 @@ classifiers = [
     "Topic :: Utilities",
 ]
 
+# Core dependencies - minimal set for CLI + Tkinter GUI
 dependencies = [
-    "pandas>=2.0.0",
-    "PySimpleGUI>=4.60.0",
-    "openpyxl>=3.1.0",
-    "xlsxwriter>=3.1.0",
-    "click>=8.1.0",
-    "tqdm>=4.65.0",
+    "pandas>=2.0.0,<3.0.0",
+    "openpyxl>=3.1.0,<4.0.0",
+    "xlsxwriter>=3.1.0,<4.0.0",
+    "click>=8.1.0,<9.0.0",
+    "tqdm>=4.65.0,<5.0.0",
 ]
 
 [project.optional-dependencies]
+# Individual GUI backends
+gui_pysimplegui = [
+    "PySimpleGUI>=4.60.0,<6.0.0",
+]
+gui_streamlit = [
+    "streamlit>=1.28.0,<2.0.0",
+]
+
+# Combined extras groups
+gui = [
+    "iLoveExcel[gui_pysimplegui]",
+]
+web = [
+    "iLoveExcel[gui_streamlit]",
+]
+all = [
+    "iLoveExcel[gui_pysimplegui,gui_streamlit]",
+]
+
+# Development and build tools
 dev = [
-    "pytest>=7.4.0",
-    "pytest-cov>=4.1.0",
-    "mypy>=1.5.0",
-    "black>=23.7.0",
-    "flake8>=6.1.0",
+    "pytest>=7.4.0,<8.0.0",
+    "pytest-cov>=4.1.0,<5.0.0",
+    "mypy>=1.5.0,<2.0.0",
+    "black>=23.7.0,<25.0.0",
+    "flake8>=6.1.0,<7.0.0",
+    "build>=1.0.0,<2.0.0",
+    "twine>=4.0.0,<5.0.0",
+]
+packaging = [
+    "pyinstaller>=6.0.0,<7.0.0",
+    "shiv>=1.0.0,<2.0.0",
 ]
 large-data = [
-    "dask[dataframe]>=2023.1.0",
+    "dask[dataframe]>=2023.1.0,<2025.0.0",
 ]
 
 [project.scripts]
+# CLI entry point (existing, backwards compatible)
 csvexcel = "iLoveExcel.cli:main"
-iloveexcel-gui = "iLoveExcel.__main__:main"
+# GUI entry point (launches Tkinter by default, accepts --gui-backend flag)
+iloveexcel = "iLoveExcel.__main__:launch_gui_entry_point"
 
 [project.urls]
 Homepage = "https://github.com/monkcoders/iLoveExcel"
 Documentation = "https://github.com/monkcoders/iLoveExcel#readme"
 Repository = "https://github.com/monkcoders/iLoveExcel"
 Issues = "https://github.com/monkcoders/iLoveExcel/issues"
+
+[tool.setuptools]
+# Dynamic version from __init__.py
+dynamic = {version = {attr = "iLoveExcel.__version__"}}
 
 [tool.setuptools.packages.find]
 where = ["src"]

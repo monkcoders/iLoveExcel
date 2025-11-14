@@ -1,0 +1,48 @@
+# MANIFEST.in - Include/exclude files in source distribution
+
+# Include essential documentation
+include README.md
+include LICENSE
+include CHANGELOG.md
+
+# Include configuration files
+include pyproject.toml
+include requirements.txt
+
+# Include type stubs
+include src/iLoveExcel/py.typed
+
+# Exclude development and build artifacts
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude __pycache__
+global-exclude .DS_Store
+global-exclude *.so
+global-exclude *.dylib
+global-exclude *.dll
+
+# Exclude test files and CI configs
+prune tests
+prune .github
+prune .git
+
+# Exclude build directories
+prune build
+prune dist
+prune *.egg-info
+
+# Exclude IDE configs
+prune .vscode
+prune .idea
+exclude .gitignore
+exclude .gitattributes
+
+# Exclude packaging and distribution scripts
+prune packaging
+prune scripts
+
+# Exclude documentation that's not needed at runtime
+prune docs
+
+# Exclude example files (users get these from GitHub)
+prune examples

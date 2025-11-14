@@ -45,6 +45,19 @@ from .utils import (
     safe_sheet_name,
 )
 
+# New features (v0.1.0+)
+from .diffs import (
+    diff_csv_side_by_side,
+    export_diff_to_excel,
+)
+
+from .io_helpers import (
+    apply_auto_column_width,
+    apply_auto_width_to_writer,
+    get_optimal_column_widths,
+    get_column_widths_from_dataframe,
+)
+
 __all__ = [
     # Version info
     '__version__',
@@ -80,4 +93,14 @@ __all__ = [
     'setup_logging',
     'validate_join_type',
     'safe_sheet_name',
+    
+    # CSV Diff functions (v0.1.0+)
+    'diff_csv_side_by_side',
+    'export_diff_to_excel',
+    
+    # Auto-width functions (v0.1.0+)
+    'apply_auto_column_width',
+    'apply_auto_width_to_writer',
+    'get_optimal_column_widths',
+    'get_column_widths_from_dataframe',
 ]
