@@ -103,7 +103,7 @@ Documentation: https://github.com/monkcoders/iLoveExcel
         
         elif backend == 'pysimplegui':
             try:
-                from .gui import main_gui
+                from .gui_tk import main_gui
                 main_gui()
             except ImportError:
                 print("Error: PySimpleGUI is not installed.", file=sys.stderr)
